@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">]
+    <meta name="author" content="Shawn Tribuce">
+    <title>Global Perspective</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="hero-section">
+        <video autoplay muted loop playsinline>
+            <source src="the_vid.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="small-image-section">
+            <img src="the_dou.png" alt="the_title" class="image">
+    </div>
+    <div class="content">
+        <div class="scroll-video-section">
+            <video class="scroll-video" muted playsinline>
+                <source src="us.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="scroll-video-section">
+            <video class="scroll-video" muted playsinline>
+                <source src="text.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div class="scroll-video-section">
+            <video class="scroll-video" muted playsinline>
+                <source src="scary_part.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+    <div>
+        <div class="small-image-section">
+            <img src="p5.png" alt="qoutes" class="small-image">
+        </div>
+        <div class="image-section">
+            <img src="iphone.png" alt="iphone_template" class="wipe-up">
+        </div>
+    </div>
+    <div class="button-section">
+        <a href="www.apple.com" target="blank" class="square-button">
+            Try Global Perspective AI
+        </a>
+
+    </div>
+
+
+
+<script>
+    const videos = document.querySelectorAll(".scroll-video");
+    videos.forEach(video =>{
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (video.paused && video.currentTime === 0) {
+                    video.play();
+                }
+            }
+        });
+    }, {
+        thheshold: 0.5
+    });
+    observer.observe(video);
+});
+
+    const wipeImage = document.querySelector(".wipe-up");
+
+    const imageObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                wipeImage.classList.add("animate");
+            }
+        });
+    }, {
+        threshold: 0.9
+    });
+    imageObserver.observe(wipeImage);
+
+</script>
+</body>
+</html>
